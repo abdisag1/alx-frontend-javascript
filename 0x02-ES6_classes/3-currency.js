@@ -1,10 +1,10 @@
 export default class Currency {
-  constructor(symbol, name) {
+  constructor(code, name) {
     // symbol (String)
-    if (typeof symbol !== 'string') {
+    if (typeof code !== 'string') {
       throw new Error('symbol must be a string');
     }
-    this._symbol = symbol;
+    this._code = code;
 
     // name (String)
     if (typeof name !== 'string') {
@@ -14,6 +14,6 @@ export default class Currency {
   }
 
   displayFullCurrency() {
-    return `${this._name} (${this._symbol})`;
+    return `${this._name} (${this._code})`;
   }
 }
