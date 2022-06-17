@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/extensions
 import Currency from './3-currency.js';
 
 export default class Pricing {
@@ -6,12 +7,12 @@ export default class Pricing {
     if (typeof amount !== 'number') {
       throw new Error('price must be a number');
     }
-    this._amount = amount;
+    this.amount = amount;
     // currency (Currency)
     if (!(currency instanceof Currency)) {
       throw new Error('currency must be a Currency');
     }
-    this._currency = currency;
+    this.currency = currency;
   }
 
   get amount() {
@@ -40,10 +41,7 @@ export default class Pricing {
     return `${this._amount} ${this._currency.displayFullCurrency()}`;
   }
 
-  convertPrice(currency) {
-    if (!(currency instanceof Currency)) {
-      throw new Error('currency must be a Currency');
-    }
-    return this._amount * currency.convert(this._currency);
+  static convertPrice(amount, conversionRate) {
+    return amount * conversionRate;
   }
 } // end class Pricing
