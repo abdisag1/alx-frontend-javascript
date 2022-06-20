@@ -7,8 +7,8 @@ export default function getListStudents() {
     },
     {
       id: 2,
-      firstNmae: 'Guillaume',
-      location: 'San Francisco',
+      firstNmae: 'James',
+      location: 'Columbia',
     },
     {
       id: 3,
