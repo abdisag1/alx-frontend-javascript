@@ -1,0 +1,6 @@
+node_modules/
+package.json
+packag-lock.json
+.eslintrc.js
+install.sh
+eslintrc.txt
