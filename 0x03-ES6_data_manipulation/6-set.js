@@ -1,4 +1,4 @@
 export default function setFromArray(array) {
-    var set = new Set(array);
-    return set;
+  const set = new Set(array);
+  return set;
 }
