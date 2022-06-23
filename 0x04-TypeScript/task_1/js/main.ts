@@ -1,49 +1,75 @@
-interface Student {
+interface Teacher {
+    readonly firstName: string;
+    readonly lastName: string;
+    fullTimeEmployee: boolean;
+    location: string;
+    yearsOfExperience?: number;
+    [propName: string]: any;
+  }
+
+  interface Directors extends Teacher {
+    numberOfReports: number;
+  }
+  
+ 
+  const teacher3: Teacher = {
+    firstName: "muluneh",
+    lastName: "hilu",
+    location: "ethiopia",
+    fullTimeEmployee: false,
+    contract: false,
+  };
+  console.log(teacher3);
+  
+  const director1: Directors = {
+    firstName: "samrawit",
+    lastName: "fetene",
+    location: "hawassa",
+    fullTimeEmployee: true,
+    numberOfReports: 17,
+  };
+  console.log(director1);
+  
+  
+  function printTeacher(firstName: string, lastName: string): string {
+    return `${firstName[0]}. ${lastName}`;
+  }
+  
+  console.log(printTeacher("natnael", "girma"));
+  
+  
+  interface classInterface {
     firstName: string;
     lastName: string;
-    age: number;
-    location: string;
+    workOnHomework(): string;
+    displayName(): string;
+  }
+  
+  
+  interface classConstructor {
+    new (firstName: string, lastName: string): classInterface;
+  }
+  
 
-}
-const stud1: Student = {
-    firstName: "Abdisa",
-    lastName: "Gemechu",
-    age: 25,
-    location: "Addis ababa",
-
-};
-
-const stud2: Student = {
-    firstName: "tihtina",
-    lastName: 'sisay',
-    age: 25,
-    location: "Addis ababa",
-};
-const studentsList: Student[] = [stud1, stud2];
-
-const table = document.createElement('table');
-const tbody = document.createElement('tbody');
-
-table.style.background = "lightgray";
-table.appendChild(tbody);
-
-studentsList.forEach((student: Student): void => {
-    const row = document.createElement('tr');
-
-    const nameCell = document.createElement('td');
-    const locationCell = document.createElement('td');
-
-    nameCell.textContent = student.firstName;
-    locationCell.textContent = student.location;
-
-    nameCell.style.border = "2px solid white";
-    locationCell.style.border = "2px solid white";
-    nameCell.style.padding = "4px";
-    locationCell.style.padding = "4px";
-
-    row.appendChild(nameCell);
-    row.appendChild(locationCell);
-    tbody.appendChild(row);
-});
-
-document.body.appendChild(table);
+  class StudentClass implements classInterface {
+    firstName: string;
+    lastName: string;
+  
+    constructor(firstName: string, lastName: string) {
+      this.firstName = firstName;
+      this.lastName = lastName;
+    }
+  
+    workOnHomework(): string {
+      return "Currently working";
+    }
+  
+    displayName(): string {
+      return this.firstName;
+    }
+  }
+  
+  // creating instance of StudentClass
+  const studentClass: StudentClass = new StudentClass("Abdisa", "Gemechu");
+  console.log(studentClass.displayName());
+  console.log(studentClass.workOnHomework());
